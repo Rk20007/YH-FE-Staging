@@ -1,8 +1,38 @@
 import React from "react";
 import StarIcon from "@mui/icons-material/Star";
 import getHotelCount from "../utils/getData";
+import {
+  Pool,
+  Wifi,
+  FitnessCenter,
+  LocalDining,
+  Spa,
+  Pets,
+  Accessibility,
+} from "@mui/icons-material";
 
 const Hotelcontent = ({ getData }) => {
+  const renderAmenityIcon = (amenity) => {
+    switch (amenity.toLowerCase()) {
+      case "pool":
+        return <Pool />;
+      case "wifi":
+        return <Wifi />;
+      case "fitness center":
+        return <FitnessCenter />;
+      case "dining":
+        return <LocalDining />;
+      case "spa":
+        return <Spa />;
+      case "pets allowed":
+        return <Pets />;
+      case "accessible":
+        return <Accessibility />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <>
       <div className="hotel-content">
@@ -52,15 +82,17 @@ const Hotelcontent = ({ getData }) => {
                 : getData?.startRating}
             </h6>
             <span>
-              {Array(
-                getData && getData?.star_category
-                  ? getData?.star_category
-                  : getData?.startRating
-              )
-                .fill()
-                .map((_, index) => (
-                  <StarIcon key={index} />
-                ))}
+              {(() => {
+                // Get the star count, fallback to 0 if not valid
+                const starCount =
+                  Number(getData?.star_category) || Number(getData?.startRating) || 0;
+                if (starCount > 0) {
+                  return Array(starCount)
+                    .fill()
+                    .map((_, index) => <StarIcon key={index} />);
+                }
+                return null; // No stars if starCount is 0 or invalid
+              })()}
             </span>
           </div>
           <div className="num-box">
@@ -88,14 +120,20 @@ For those seeking to explore, we are just minutes away from ${getData?.hotelAddr
             {getData && getData?.description_amentities
               ? getData?.description_amentities?.map((ele) => {
                   return (
-                    <div className="facility-list" key="wifi">
+                    <div className="facility-list" key={ele}>
+                      <div className="facility-icon">
+                        {renderAmenityIcon(ele)}
+                      </div>
                       <h5>{ele}</h5>
                     </div>
                   );
                 })
               : getData?.hotelAmenities?.map((ele) => {
                   return (
-                    <div className="facility-list" key="wifi">
+                    <div className="facility-list" key={ele}>
+                      <div className="facility-icon">
+                        {renderAmenityIcon(ele)}
+                      </div>
                       <h5>{ele}</h5>
                     </div>
                   );
