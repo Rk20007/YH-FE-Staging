@@ -66,12 +66,19 @@ const Sidenav = () => {
           <FlightIcon className="nav-icon" /> Flights
         </Link>
         <Link
+          to="/yhhotel"
+          className={`nav-link ${activeTab === "yhhotel" ? "active" : ""}`}
+          onClick={() => setActiveTab("yhhotel")}
+        >
+          <HotelIcon className="nav-icon" /> YH Hotels
+        </Link>
+        {/* <Link
           to="/hotel"
           className={`nav-link ${activeTab === "hotel" ? "active" : ""}`}
           onClick={() => setActiveTab("hotel")}
         >
           <HotelIcon className="nav-icon" /> Hotel
-        </Link>
+        </Link> */}
         <Link
           to="/transport"
           className={`nav-link ${activeTab === "transport" ? "active" : ""}`}
@@ -86,13 +93,7 @@ const Sidenav = () => {
         >
           <LocalOfferIcon className="nav-icon" /> Offers
         </Link>
-        <Link
-          to="/yhhotel"
-          className={`nav-link ${activeTab === "yhhotel" ? "active" : ""}`}
-          onClick={() => setActiveTab("yhhotel")}
-        >
-          <HotelIcon className="nav-icon" /> YH Hotels
-        </Link>
+       
         {Cookies.get("yh_auth_token") && (
           <Link
             to="/trips"

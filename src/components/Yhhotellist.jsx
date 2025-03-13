@@ -71,7 +71,7 @@ const Yhhotellist = ({ fromValue, cabinClass }) => {
         {findData &&
           findData.map((ele, i) => (
             <div
-              className="col-lg-4 hotel-look"
+              className="col-lg-4 hotel-look pb-4"
               key={i}
               style={{
                 display: `${ele.active ? "block" : "none"}`,
