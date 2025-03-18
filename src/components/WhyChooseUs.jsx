@@ -16,7 +16,7 @@ const WhyChooseUs = () => {
 
   return (
     <>
-      {description.data ? (
+      {description?.data ? (
         <div
           className="why-us-section pt-5"
           style={{ textAlign: "justify" }}
