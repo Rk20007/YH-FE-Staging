@@ -59,19 +59,20 @@ const Sidenav = () => {
         }`}
       >
         <Link
-          to="/"
-          className={`nav-link ${activeTab === "flights" ? "active" : ""}`}
-          onClick={() => setActiveTab("flights")}
-        >
-          <FlightIcon className="nav-icon" /> Flights
-        </Link>
-        <Link
           to="/yhhotel"
           className={`nav-link ${activeTab === "yhhotel" ? "active" : ""}`}
           onClick={() => setActiveTab("yhhotel")}
         >
           <HotelIcon className="nav-icon" /> YH Hotels
         </Link>
+        <Link
+          to="/"
+          className={`nav-link ${activeTab === "flights" ? "active" : ""}`}
+          onClick={() => setActiveTab("flights")}
+        >
+          <FlightIcon className="nav-icon" /> Flights
+        </Link>
+        
         {/* <Link
           to="/hotel"
           className={`nav-link ${activeTab === "hotel" ? "active" : ""}`}
