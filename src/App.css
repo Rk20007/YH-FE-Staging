@@ -9,6 +9,7 @@ body::-webkit-scrollbar {
   border-radius: 10px;
 }
 
+
 body::-webkit-scrollbar-track {
   background-color: #d6cdff;
   border-radius: 10px;
